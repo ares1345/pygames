@@ -18,7 +18,7 @@ txt_s = font.render("I WANNA KILL MYSELF", False, 'Black').convert()
 
 
 snail_s = pg.image.load("graphics/snail/snail1.png").convert_alpha() #IF THE BACKGROUND IS TRANSPARENT
-snail_x_pos = 600
+snail_rect = snail_s.get_rect(midbottom = (600, 300))
 
 player_s = pg.image.load('graphics/Player/player_walk_1.png').convert_alpha()
 player_rect = player_s.get_rect(midbottom = (80, 300))
@@ -34,9 +34,11 @@ while True: #to run forever
     screen.blit(sky_s,(0, 0)) #put the surface on the screen
     screen.blit(ground_s,(0, 300))
     screen.blit(txt_s, (300, 50))
-    snail_x_pos -= 4
-    if snail_x_pos <= -150: snail_x_pos = 800
-    screen.blit(snail_s, (snail_x_pos, 268))
+    snail_rect.x -= 4
+    if snail_rect.right <= 0: snail_rect.left = 800
+
+
+    screen.blit(snail_s, snail_rect)
     screen.blit(player_s, player_rect)
 
 
