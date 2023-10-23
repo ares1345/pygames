@@ -31,6 +31,9 @@ while True: #to run forever
         if event.type == pg.QUIT:
             pg.quit()
             exit() #prtty much make it quit
+        #if event.type == pg.MOUSEMOTION:
+        #    if player_rect.colliderect(event.pos): print("collision")
+
 
 
 
@@ -41,16 +44,13 @@ while True: #to run forever
     if snail_rect.right <= 0: snail_rect.left = 800
     screen.blit(snail_s, snail_rect)
     screen.blit(player_s, player_rect)
-
+    """
     if player_rect.colliderect(snail_rect): #works because python assume you check if its true by default
-        print("collision")
+       print("collision")
 
-
-
-
-
+    mouse_pos = pg.mouse.get_pos()
+    if player_rect.collidepoint(mouse_pos):
+        pg.mouse.get_pressed()     (to check which mouse button gets pressed)
+    """
     pg.display.update() #make the game update in a infinite loop
     clock.tick(60) #set max framerate to 60 fps
-
-
-
