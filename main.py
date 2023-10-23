@@ -1,3 +1,6 @@
+#NOTE: this project obviously doesnt belong to me and I simply am using the asset that is provided by the youtuber.
+#orig project: https://github.com/clear-code-projects/UltimatePygameIntro/tree/main
+
 import pygame as pg 
 from sys import exit
 import os
@@ -7,14 +10,14 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 pg.init()
 
 screen = pg.display.set_mode((800, 400))
-pg.display.set_caption("god this is gonna be bad") #title set on top of the window
+pg.display.set_caption("game title") #title set on top of the window
 clock = pg.time.Clock() #variable to set max framerate later on
 font = pg.font.Font('font/Pixeltype.ttf',50)
 
 
 sky_s = pg.image.load('graphics/Sky.png').convert() #convert make game faster prtty much
 ground_s = pg.image.load('graphics/ground.png').convert()
-txt_s = font.render("I WANNA KILL MYSELF", False, 'Black').convert()
+txt_s = font.render("snail game", False, 'Black').convert()
 
 
 snail_s = pg.image.load("graphics/snail/snail1.png").convert_alpha() #IF THE BACKGROUND IS TRANSPARENT
@@ -36,10 +39,12 @@ while True: #to run forever
     screen.blit(txt_s, (300, 50))
     snail_rect.x -= 4
     if snail_rect.right <= 0: snail_rect.left = 800
-
-
     screen.blit(snail_s, snail_rect)
     screen.blit(player_s, player_rect)
+
+    if player_rect.colliderect(snail_rect): #works because python assume you check if its true by default
+        print("collision")
+
 
 
 
